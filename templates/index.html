@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark/Light Mode Toggle</title>
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex; /* Enable flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Ensure body takes up at least the full viewport height */
+            margin: 0; /* Remove default body margin */
+            font-family: sans-serif; /* Add a default font */
+        }
+        .light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+        .toggle-button {
+            position: absolute; /* Position the button outside the centered content */
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .light-text {
+            font-size: 2em; /* Large font */
+            display: block;
+        }
+        .dark-text {
+            font-size: 1em; /* Default font size for comparison */
+            display: none;
+        }
+        body.dark-mode .light-text {
+            display: none;
+        }
+        body.dark-mode .dark-text {
+            display: block;
+            font-size: 2em; /* Twice as large as the default dark-text size */
+            color: red;
+            text-align: center; /* Optional: Center the text within its container */
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <button id="themeToggle" class="toggle-button">Toggle Dark Mode</button>
+
+    <div class="light-text">Hello World!</div>
+    <div class="dark-text">Oh hellllooo world</div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.textContent = 'Toggle Light Mode';
+            } else {
+                themeToggle.textContent = 'Toggle Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
